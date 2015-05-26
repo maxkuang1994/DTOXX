@@ -37,6 +37,10 @@ app.get('/about', function(req, res) {
 
   res.render('about');
 });
+app.get('/main', function(req, res) {
+
+  res.render('main');
+});
 
 http.createServer(app).listen(app.get('port'), function() {
     console.log('Express server listening on port ' + app.get('port'));
