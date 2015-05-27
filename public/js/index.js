@@ -12,6 +12,8 @@ $(document).ready(function() {
     .animate({
       height: '170px'
     }, 2500);
+
+    $('#container').css("margin","0 auto");
   
   $('.beer-foam') // Keep that Foam Rollin' Toward the Top! Yahooo!
     .delay(3400)

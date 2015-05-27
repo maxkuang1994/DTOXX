@@ -13,7 +13,7 @@ h2 {
 #container {
   height: 300px;
   margin: 0 auto;
-  overflow: hidden;
+
   position: relative;
   top: -20px;
   width: 248px;
