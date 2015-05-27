@@ -6,12 +6,12 @@ h2 {
   width: 400px;
   font-size: 36px;
   text-align: center;
-  font-family: 'Lato', sans-serif;
+
   color: whiteSmoke;
 }
 
 #container {
-  height: 370px;
+  height: 300px;
   margin: 0 auto;
   overflow: hidden;
   position: relative;

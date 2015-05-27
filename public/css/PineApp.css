@@ -492,15 +492,13 @@ div#map-canvas>div.gm-style>div>a>div>img{display:none;}
 }
 #drunkDriving{
 
- margin-top: 47vh;
+ margin-top: 40vh;
  text-align: center;
  margin-left: 0vw;
  width: 30vw;
 }
 
 #dailyDeath{
-
-  margin-left: 2vw;
   width: 20vw;
   position: top;
 }
@@ -510,4 +508,19 @@ div#map-canvas>div.gm-style>div>a>div>img{display:none;}
   to {
     transform: rotate(360deg);
   }
+}
+.bac{
+    -webkit-transform-style: preserve-3d;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
+  display: block;
+  height: 100%;
+  overflow: hidden;
+
+  transition: .4s;
+  width: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
