@@ -600,13 +600,18 @@ header h1{
 }
 .hoverGreen{
   padding:5px 0;
+  text-decoration: none;
+  border:none;
 }
-.hoverGreen:hover{background:rgb(23, 148, 124);
+.hoverGreen:hover,.hoverGreen:active{background:rgb(23, 148, 124);
 text-decoration: none;
-
+border:none;
 }
 
+div#geochart-colors>div>div{
+ margin:0 auto
 
+}
 
 
 
