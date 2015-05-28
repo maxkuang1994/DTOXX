@@ -37,6 +37,12 @@ app.get('/about', function(req, res) {
 
   res.render('about');
 });
+
+app.get('/heatMap', function(req, res) {
+
+  res.render('heatMap');
+});
+
 app.get('/main', function(req, res) {
 
   res.render('main');

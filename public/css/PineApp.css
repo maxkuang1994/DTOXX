@@ -603,13 +603,13 @@ header h1{
   text-decoration: none;
   border:none;
 }
-.hoverGreen:hover,.hoverGreen:active{background:rgb(23, 148, 124);
+.hoverGreen:hover,.hoverGreen:active,.hoverGreen:visited{background:rgb(23, 148, 124);
 text-decoration: none;
 border:none;
 }
 
 
-.hoverBlue:hover,.hoverBlue:active{background:#2F4157;
+.hoverBlue:hover,.hoverBlue:active,.hoverBlue:visited{background:#2F4157;
 text-decoration: none;
 border:none;
 }
