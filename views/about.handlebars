@@ -119,23 +119,22 @@
       </section>
     </div>
     <div class="slide bac" id="slide2" style=" background: url('/img/cartoon2.png') no-repeat; background-size: cover;background-position:center; ">
-      <section class=" paddingem">
-        <div class="page-header text-center">
+      <section class=" paddingem" >
+        <div class="page-header text-center" style="background:#2C3E50">
           <h1 class="entry-title">
                               <a href="#">Drunk driving in the United States
       </a> <br>
-                        <div>- <i style="color:#2C3E50"class="fa fa-heart fa-fw"></i></a></li> -</div>
+                        <div>- <i style="color:#1ABC9C"class="fa fa-heart fa-fw"></i></a></li> -</div>
                     </h1> </div>
-        <div class="imageSec  page-header" >
-            <div id="geochart-colors"></div>
 
-
+        <div class="imageSec img-responsive page-header" style="background:rgba(44, 62, 80, 0.9)">
+            <div id="geochart-colors" class="img-responsive"></div>
 
           <h1 class="entry-title" style="display:inline;overflow:hidden">
       <div >
-                <a href="#3rdPage" class="hoverGreen" style="float:left;width:50%">Back
+                <a href="#3rdPage" class="hoverBlue" style="float:left;width:50%">Back
                      </a>
- <a href="#" class="hoverGreen" style="float:right;width:50%"> SAN DIEGO
+ <a href="#" class="hoverBlue" style="float:right;width:50%"> SAN DIEGO
                      </a>
 </div>
 
@@ -145,16 +144,33 @@
         <div id="goodDiv">
           <p> </p>
         </div>
-      </section>
+        <div >
+  <div class="truck truckAnimation" style="margin:0;">
+    <div class="body">
+      <img src="/img/truck-under.svg" width="500" height="136">
+      <div class="shine"></div>
+      <img src="/img/truck-frame.svg" width="500" height="136" class="frame">
     </div>
+
+    <div class="speed-thingy"></div>
+    <div class="speed-thingy second"></div>
+    <div class="shadow"></div>
+
+    <div class="wheel back"></div>
+    <div class="wheel front"></div>
+</div>
+      </section>
+
+
+    </div>
+
+
     <div class="slide" id="slide2">
       <div class="content">
         <h1>More slides!</h1>
       </div>
     </div>
   </div>
-
-
 
 
     </div>
@@ -249,7 +265,7 @@ options = $.extend({
  region:'US',
  keepAspectRatio: true,
  width:600,
- height:400,
+ height:350,
  tooltip: {textStyle: {color: '#444444'}, trigger:'hover'}  
  };
 
