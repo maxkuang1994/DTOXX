@@ -1,4 +1,7 @@
-﻿.noTextDec{
+﻿g.highcharts-grid{
+  display:none;
+}
+.noTextDec{
 
   text-decoration:none;
   border:none;
