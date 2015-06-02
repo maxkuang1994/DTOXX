@@ -173,6 +173,197 @@
 <script src='http://code.highcharts.com/modules/exporting.js'></script>
 
         <script src="js/index2.js"></script>
+              <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+
+ <script>
+      var margin = {top: 20, right: 20, bottom: 100, left: 40};
+  var width = 600 - margin.left - margin.right;
+  var height = 350 - margin.top - margin.bottom;
+
+  //define scale of x to be from 0 to width of SVG, with .1 padding in between
+  var scaleX = d3.scale.ordinal()
+    .rangeRoundBands([0, width], .1);
+
+  //define scale of y to be from the height of SVG to 0
+  var scaleY = d3.scale.linear()
+    .range([height, 0]);
+
+  //define axes
+  var xAxis = d3.svg.axis()
+    .scale(scaleX)
+    .orient("bottom");
+
+  var yAxis = d3.svg.axis()
+    .scale(scaleY)
+    .orient("left");
+
+  //create a tip
+  var tip = d3.tip()
+    .attr('class', 'd3-tip')
+    .offset([-10, 0])
+    .html(function(d) {
+      return "<strong>collision rate:</strong> <span style='color:red'>" + d.frequency + "</span>";
+    })
+
+  //create svg
+
+    //var dataset = [ 5, 10, 13, 19, 21, 25, 22, 18, 15, 13, 11, 12, 15, 20, 18, 17, 16, 18, 23, 25 ];
+
+  var svg = d3.select("#d3").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  svg.call(tip);
+
+  //get json object which contains media counts
+d3.tsv("fonts/data.tsv", type, function(error, data) {
+  scaleX.domain(data.map(function(d) { return d.letter; }));
+  scaleY.domain([0, d3.max(data, function(d) { return d.frequency; })]);
+
+    //set up x axis
+    svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")") //move x-axis to the bottom
+      .call(xAxis)
+      .selectAll("text")  
+      .style("text-anchor", "end")
+      .attr("dx", "-.8em")
+      .attr("dy", ".15em")
+      .attr("transform", function(d) {
+        return "rotate(-65)" 
+      });
+
+    //set up y axis
+    svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+      .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("rate");
+
+    //set up bars in bar graph
+    svg.selectAll(".bar")
+      .data(data)
+      .enter().append("rect")
+      .attr("class", "bar")
+      .attr("x", function(d) { return scaleX(d.letter); })
+      .attr("width", scaleX.rangeBand())
+      .attr("y", function(d) { return scaleY(d.frequency); })
+      .attr("height", function(d) { return height - scaleY(d.frequency); })
+      //.attr("fill", function(d) { return "rgb(0, 0, " + (d * 10)%255 + ")";})
+      .on('mouseover', tip.show)
+      .on('mouseout', tip.hide)
+        .attr("fill", function(d) {
+    return "rgb(" + ( parseInt(d.frequency*1.5, 10)) + ", "+ (255-parseInt(d.frequency*1.5, 10) )+", 100)";
+    });
+
+    d3.select("input").on("change", change);
+
+    var sortTimeout = setTimeout(function() {
+      d3.select("input").property("checked", true).each(change);
+    }, 2000);
+
+    function change() {
+      clearTimeout(sortTimeout);
+
+      // Copy-on-write since tweens are evaluated after a delay.
+      var x0 = scaleX.domain(data.sort(this.checked
+          ? function(a, b) { return b.frequency - a.frequency; }
+          : function(a, b) { return d3.ascending(a.letter, b.letter); })
+          .map(function(d) { return d.letter; }))
+          .copy();
+
+      svg.selectAll(".bar")
+          .sort(function(a, b) { return x0(a.letter) - x0(b.letter); });
+
+      var transition = svg.transition().duration(750),
+          delay = function(d, i) { return i * 50; };
+
+      transition.selectAll(".bar")
+          .delay(delay)
+          .attr("x", function(d) { return x0(d.letter); });
+
+      transition.select(".x.axis")
+          .call(xAxis)
+        .selectAll("g")
+          .delay(delay);
+    }
+  });
+
+function type(d) {
+  d.frequency = +d.frequency;
+  return d;
+}
+
+</script>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+            $("#LA").hover(
+        
+               function () {
+                  $("#quote1").text(" [...] ride-sharing apps like Uber, Lyft and Sidecar have become a go-to Godsend for party people in L.A. And it's"+
+                    " conceivable that they're starting have their impact on DUI statistics, possibly making streets safer for everyone.");
+                  $("#credit1").text("LA WEEKLY");
+               }, 
+        
+               function () {
+                  $("#quote1").text("The data seem to support our expectation that Lyft and Uber reduce DUIs. But more important is the logical "+
+                    "conclusion that we can reduce drink driving by giving young partiers transportation alternatives that are safe and require no"+
+                    " computing of tips or counting of cash. ");
+                  $("#credit1").text("Steve DelBianco, executive director of NetChoice");
+
+               }
+            );
+
+            $("#california").hover(
+        
+               function () {
+                  $("#quote1").text("This study shows us that when empowered with more transportation options, people are making safer, better choices"+
+                    "that are helping save lives.");
+                  $("#credit1").text("David Plouffe, Senior Vice President for Policy & Strategy at Uber. ");
+
+               }, 
+        
+               function () {
+                  $("#quote1").text("The data seem to support our expectation that Lyft and Uber reduce DUIs. But more important is the logical "+
+                    "conclusion that we can reduce drink driving by giving young partiers transportation alternatives that are safe and require no"+
+                    " computing of tips or counting of cash. ");
+                  $("#credit1").text("Steve DelBianco, executive director of NetChoice");
+
+               }
+            );
+
+
+            $("#seattle").hover(
+        
+               function () {
+                  $("#quote1").text("The new report (on DUI ) found ridesharing is having a significant impact across America’s cities, providing people with "+
+                    "smarter alternatives to getting behind the wheel if their plans include alcohol. ");
+                  $("#credit1").text("MADD (Mothers Against Drunk Driving)");
+
+               }, 
+        
+               function () {
+                  $("#quote1").text("The data seem to support our expectation that Lyft and Uber reduce DUIs. But more important is the logical "+
+                    "conclusion that we can reduce drink driving by giving young partiers transportation alternatives that are safe and require no"+
+                    " computing of tips or counting of cash. ");
+                  $("#credit1").text("Steve DelBianco, executive director of NetChoice");
+
+               }
+            );
+         });
+
+
+</script>    
 </body>
 </html>
 
