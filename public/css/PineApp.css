@@ -2,7 +2,7 @@
 
   text-decoration:none;
 }
-.noTextDec:hover{
+.noTextDec:hover, .noTextDec:focus, .noTextDec:active{
 
   text-decoration:none;
 }
@@ -367,8 +367,6 @@ div#map-canvas>div.gm-style>div>a>div>img{display:none;}
   }
 }
      
-
-
 .clock {
   position: relative;
   height: 200px;
@@ -606,7 +604,7 @@ header h1{
 
   .paddingem{
 
-    padding:0 10em;
+    padding:0 5em;
   }
 
 }
