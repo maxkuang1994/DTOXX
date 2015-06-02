@@ -621,3 +621,11 @@ body .ui_box:hover {
     height: 13px;
   }
 }
+
+rect.highcharts-background{
+  fill:rgba(166, 195, 226, 0.22);
+}
+#highcharts-0 > svg>text{
+  display:none;
+}
+g.highcharts-button{display:none;}
