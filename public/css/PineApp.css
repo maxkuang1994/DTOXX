@@ -1,4 +1,7 @@
-﻿g.highcharts-grid{
+﻿#highcharts-0 svg g text{
+  color:#fff;
+}
+g.highcharts-grid{
   display:none;
 }
 .noTextDec{

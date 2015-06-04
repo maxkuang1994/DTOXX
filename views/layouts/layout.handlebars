@@ -363,7 +363,276 @@ $(document).ready(function() {
          });
 
 
+
+
 </script>    
+ <script>
+// Adding 500 Data Points
+var map, pointarray, heatmap;
+//var myLatLng = new google.maps.LatLng(33.150987, -117.277763);
+
+var crashData = [
+{location:  new google.maps.LatLng( 32.844,-116.7568664 ), weight:  49.8  },
+{location:  new google.maps.LatLng( 32.799299,-116.9532165  ), weight:  56.8  },
+{location:  new google.maps.LatLng( 32.8019979,-116.867176  ), weight:  121.3 },
+{location:  new google.maps.LatLng( 32.7161115,-116.8722585 ), weight:  42.3  },
+{location:  new google.maps.LatLng( 32.7698494,-117.0177946 ), weight:  189.5 },
+{location:  new google.maps.LatLng( 32.8503264,-116.9098894 ), weight:  110.7 },
+{location:  new google.maps.LatLng( 32.7326733,-117.038919  ), weight:  144.9 },
+{location:  new google.maps.LatLng( 32.7382744,-116.3960005 ), weight:  48.9  },
+{location:  new google.maps.LatLng( 32.8592325,-116.988263  ), weight:  42  },
+{location:  new google.maps.LatLng( 32.7294384,-116.9794295 ), weight:  76.7  },
+{location:  new google.maps.LatLng( 32.9585454,-117.2636194 ), weight:  58.4  },
+{location:  new google.maps.LatLng( 32.8035347,-117.0349292 ), weight:  72.1  },
+{location:  new google.maps.LatLng( 32.827887,-117.1461504  ), weight:  8 },
+{location:  new google.maps.LatLng( 32.868788,-117.1531511  ), weight:  120.8 },
+{location:  new google.maps.LatLng( 32.8695636,-117.2073419 ), weight:  68.2  },
+{location:  new google.maps.LatLng( 33.202577,-117.367068 ), weight:  54.9  },
+{location:  new google.maps.LatLng( 33.1215195,-117.287719  ), weight:  75.8  },
+{location:  new google.maps.LatLng( 33.2259755,-117.3175415 ), weight:  18  },
+{location:  new google.maps.LatLng( 33.3220441,-117.317228  ), weight:  71.6  },
+{location:  new google.maps.LatLng( 33.0037625,-117.2331358 ), weight:  65.7  },
+{location:  new google.maps.LatLng( 33.184998,-117.2404705  ), weight:  75  },
+{location:  new google.maps.LatLng( 32.9226655,-117.072944  ), weight:  157.7 },
+{location:  new google.maps.LatLng( 33.100492,-116.301327 ), weight:  90.8  },
+{location:  new google.maps.LatLng( 33.1347254,-117.0699775 ), weight:  114.2 },
+{location:  new google.maps.LatLng( 33.3663111,-117.214997  ), weight:  53.5  },
+{location:  new google.maps.LatLng( 32.8245525,-117.0951632 ), weight:  239.3 },
+{location:  new google.maps.LatLng( 33.0740404,-116.587176  ), weight:  174.3 },
+{location:  new google.maps.LatLng( 33.3033679,-116.9814167 ), weight:  24.3  },
+{location:  new google.maps.LatLng( 32.9967799,-117.0124775 ), weight:  91.8  },
+{location:  new google.maps.LatLng( 33.0253775,-116.8255691 ), weight:  54.5  },
+{location:  new google.maps.LatLng( 33.1344508,-117.1703079 ), weight:  132.9 },
+{location:  new google.maps.LatLng( 33.226128,-117.0206735  ), weight:  53.4  },
+{location:  new google.maps.LatLng( 32.6317664,-117.0208791 ), weight:  97.2  },
+{location:  new google.maps.LatLng( 32.6926616,-117.2063  ), weight:  73.7  },
+{location:  new google.maps.LatLng( 32.669864,-117.0895853  ), weight:  40.8  },
+{location:  new google.maps.LatLng( 32.5841728,-117.0429 ), weight:  31  },
+{location:  new google.maps.LatLng( 32.6349965,-117.0846095 ), weight:  9 }
+];
+
+  var gradient;
+
+function initialize() {
+  var mapOptions = {
+    zoom: 9,
+    center: new google.maps.LatLng(33.062334, -116.55832),
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  };
+
+  map = new google.maps.Map(document.getElementById('map-canvas'),
+      mapOptions);
+
+  var pointArray = new google.maps.MVCArray(crashData);
+
+  heatmap = new google.maps.visualization.HeatmapLayer({
+    data: pointArray
+  });
+
+  heatmap.set('opacity',0.85);
+  heatmap.set('radius', 42);
+  heatmap.setMap(map);
+
+  var styles = [
+      {featureType: 'poi.attraction',
+       stylers: [{color: '#fce8b2'}]
+      },
+      {featureType: 'road.highway',
+       stylers: [{hue: '#0277bd'}, {saturation: -50}]
+      },
+      {featureType: 'road.highway',
+       elementType: 'labels.icon',
+       stylers: [{hue: '#000'}, {saturation: 100}, {lightness: 50}]
+      },
+      {featureType: 'landscape',
+       stylers: [{hue: '#259b24'}, {saturation: 10}, {lightness: -22}]
+      }
+  ];
+
+  map.setOptions({styles: styles});
+
+  var iconBase = 'https://maps.google.com/mapfiles/kml/pal2/icon39.png';
+var marker1 = new google.maps.Marker({  position: new google.maps.LatLng( 32.844,-116.7568664   ),  title: "  Alpine  : 49.8  ",  map: map,icon: iconBase, opacity: 0 });
+var marker2 = new google.maps.Marker({  position: new google.maps.LatLng( 32.799299,-116.9532165  ),  title: "  El Cajon  : 56.8  ",  map: map,icon: iconBase, opacity: 0 });
+var marker3 = new google.maps.Marker({  position: new google.maps.LatLng( 32.8019979,-116.867176  ),  title: "  Harbison Crest  : 121.3 ",  map: map,icon: iconBase, opacity: 0 });
+var marker4 = new google.maps.Marker({  position: new google.maps.LatLng( 32.7161115,-116.8722585 ),  title: "  Jamul : 42.3  ",  map: map,icon: iconBase, opacity: 0 });
+var marker5 = new google.maps.Marker({  position: new google.maps.LatLng( 32.7698494,-117.0177946 ),  title: "  La Mesa : 189.5 ",  map: map,icon: iconBase, opacity: 0 });
+var marker6 = new google.maps.Marker({  position: new google.maps.LatLng( 32.8503264,-116.9098894 ),  title: "  Lakeside  : 110.7 ",  map: map,icon: iconBase, opacity: 0 });
+var marker7 = new google.maps.Marker({  position: new google.maps.LatLng( 32.7326733,-117.038919  ),  title: "  Lemon Grove : 144.9 ",  map: map,icon: iconBase, opacity: 0 });
+var marker8 = new google.maps.Marker({  position: new google.maps.LatLng( 32.7382744,-116.3960005 ),  title: "  Mountain Empire : 48.9  ",  map: map,icon: iconBase, opacity: 0 });
+var marker9 = new google.maps.Marker({  position: new google.maps.LatLng( 32.8592325,-116.988263  ),  title: "  Santee  : 42  ",  map: map,icon: iconBase, opacity: 0 });
+var marker10  = new google.maps.Marker({  position: new google.maps.LatLng( 32.7294384,-116.9794295 ),  title: "  Spring Valley : 76.7  ",  map: map,icon: iconBase, opacity: 0 });
+var marker11  = new google.maps.Marker({  position: new google.maps.LatLng( 32.9585454,-117.2636194 ),  title: "  Del Mar-Mira Mesa : 58.4  ",  map: map,icon: iconBase, opacity: 0 });
+var marker12  = new google.maps.Marker({  position: new google.maps.LatLng( 32.8035347,-117.0349292 ),  title: "  Elliott-Navajo  : 72.1  ",  map: map,icon: iconBase, opacity: 0 });
+var marker13  = new google.maps.Marker({  position: new google.maps.LatLng( 32.827887,-117.1461504  ),  title: "  Kearny Mesa : 8 ",  map: map,icon: iconBase, opacity: 0 });
+var marker14  = new google.maps.Marker({  position: new google.maps.LatLng( 32.868788,-117.1531511  ),  title: "  Miramar : 120.8 ",  map: map,icon: iconBase, opacity: 0 });
+var marker15  = new google.maps.Marker({  position: new google.maps.LatLng( 32.8695636,-117.2073419 ),  title: "  University  : 68.2  ",  map: map,icon: iconBase, opacity: 0 });
+var marker16  = new google.maps.Marker({  position: new google.maps.LatLng( 33.202577,-117.367068   ),  title: "  North Coastal Region  : 54.9  ",  map: map,icon: iconBase, opacity: 0 });
+var marker17  = new google.maps.Marker({  position: new google.maps.LatLng( 33.1215195,-117.287719  ),  title: "  Carlsbad  : 75.8  ",  map: map,icon: iconBase, opacity: 0 });
+var marker18  = new google.maps.Marker({  position: new google.maps.LatLng( 33.2259755,-117.3175415 ),  title: "  Oceanside : 18  ",  map: map,icon: iconBase, opacity: 0 });
+var marker19  = new google.maps.Marker({  position: new google.maps.LatLng( 33.3220441,-117.317228  ),  title: "  Pendleton : 71.6  ",  map: map,icon: iconBase, opacity: 0 });
+var marker20  = new google.maps.Marker({  position: new google.maps.LatLng( 33.0037625,-117.2331358 ),  title: "  San Dieguito  : 65.7  ",  map: map,icon: iconBase, opacity: 0 });
+var marker21  = new google.maps.Marker({  position: new google.maps.LatLng( 33.184998,-117.2404705  ),  title: "  Vista : 75  ",  map: map,icon: iconBase, opacity: 0 });
+var marker22  = new google.maps.Marker({  position: new google.maps.LatLng( 32.9226655,-117.072944  ),  title: "  North Inland Region : 157.7 ",  map: map,icon: iconBase, opacity: 0 });
+var marker23  = new google.maps.Marker({  position: new google.maps.LatLng( 33.100492,-116.301327   ),  title: "  Anza-Borrego Springs  : 90.8  ",  map: map,icon: iconBase, opacity: 0 });
+var marker24  = new google.maps.Marker({  position: new google.maps.LatLng( 33.1347254,-117.0699775 ),  title: "  Escondido : 114.2 ",  map: map,icon: iconBase, opacity: 0 });
+var marker25  = new google.maps.Marker({  position: new google.maps.LatLng( 33.3663111,-117.214997  ),  title: "  Fallbrook : 53.5  ",  map: map,icon: iconBase, opacity: 0 });
+var marker26  = new google.maps.Marker({  position: new google.maps.LatLng( 32.8245525,-117.0951632 ),  title: "  North San Diego : 239.3 ",  map: map,icon: iconBase, opacity: 0 });
+var marker27  = new google.maps.Marker({  position: new google.maps.LatLng( 33.0740404,-116.587176  ),  title: "  Palomar-Julian  : 174.3 ",  map: map,icon: iconBase, opacity: 0 });
+var marker28  = new google.maps.Marker({  position: new google.maps.LatLng( 33.3033679,-116.9814167 ),  title: "  Pauma : 24.3  ",  map: map,icon: iconBase, opacity: 0 });
+var marker29  = new google.maps.Marker({  position: new google.maps.LatLng( 32.9967799,-117.0124775 ),  title: "  Poway : 91.8  ",  map: map,icon: iconBase, opacity: 0 });
+var marker30  = new google.maps.Marker({  position: new google.maps.LatLng( 33.0253775,-116.8255691 ),  title: "  Ramona  : 54.5  ",  map: map,icon: iconBase, opacity: 0 });
+var marker31  = new google.maps.Marker({  position: new google.maps.LatLng( 33.1344508,-117.1703079 ),  title: "  San Marcos  : 132.9 ",  map: map,icon: iconBase, opacity: 0 });
+var marker32  = new google.maps.Marker({  position: new google.maps.LatLng( 33.226128,-117.0206735  ),  title: "  Valley Center : 53.4  ",  map: map,icon: iconBase, opacity: 0 });
+var marker33  = new google.maps.Marker({  position: new google.maps.LatLng( 32.6317664,-117.0208791 ),  title: "  Chula Vista : 97.2  ",  map: map,icon: iconBase, opacity: 0 });
+var marker34  = new google.maps.Marker({  position: new google.maps.LatLng( 32.6926616,-117.2063    ),  title: "  Coronado  : 73.7  ",  map: map,icon: iconBase, opacity: 0 });
+var marker35  = new google.maps.Marker({  position: new google.maps.LatLng( 32.669864,-117.0895853  ),  title: "  National City : 40.8  ",  map: map,icon: iconBase, opacity: 0 });
+var marker36  = new google.maps.Marker({  position: new google.maps.LatLng( 32.5841728,-117.0429  ),  title: "  South Bay : 31  ",  map: map,icon: iconBase, opacity: 0 });
+var marker37  = new google.maps.Marker({  position: new google.maps.LatLng( 32.6349965,-117.0846095 ),  title: "  Sweetwater  : 9 ",  map: map,icon: iconBase, opacity: 0 });
+} //end initialize function
+
+
+function toggleHeatmap() {
+  heatmap.setMap(heatmap.getMap() ? null : map);
+}
+
+function changeGradient() {
+  var gradient = [
+    'rgba(0, 255, 255, 0)',
+    'rgba(0, 255, 255, 1)',
+    'rgba(0, 191, 255, 1)',
+    'rgba(0, 127, 255, 1)',
+    'rgba(0, 63, 255, 1)',
+    'rgba(0, 0, 255, 1)',
+    'rgba(0, 0, 223, 1)',
+    'rgba(0, 0, 191, 1)',
+    'rgba(0, 0, 159, 1)',
+    'rgba(0, 0, 127, 1)',
+    'rgba(3, 0, 191, 1)',
+    'rgba(27, 0, 163, 1)',
+    'rgba(41, 0, 131, 1)',
+    'rgba(55, 0, 10, 1)'
+  ]
+  heatmap.set('gradient', heatmap.get('gradient') ? null : gradient);
+}
+
+function changeRadius() {
+  heatmap.set('radius', heatmap.get('radius') ? null : 42);
+}
+
+function changeOpacity() {
+  heatmap.set('opacity', heatmap.get('opacity') ? null : 0.85);
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+
+
+    </script>
+
+
+    
+
+
+      <script type="text/javascript" src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1.1','packages':['geochart']}]}"></script>
+  <script>
+    google.maps.event.addDomListener(window, 'load', initialize);
+    options = $.extend({
+      scrollwheel: false,
+      navigationControl: false,
+      mapTypeControl: false,
+      scaleControl: false,
+      draggable: false,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    }, options);
+  </script>
+  <script>
+    google.setOnLoadCallback(drawRegionsMap);
+
+    function drawRegionsMap() {
+      var data = google.visualization.arrayToDataTable([
+          ['States', 'Accidents'],
+     ['Alabama ', 852],
+['Alaska ', 51],
+['Arizona ', 849],
+['Arkansas ', 483],
+['California ', 3000],
+['Colorado ', 481],
+['Connecticut ', 276],
+['Delaware ', 99],
+['Dist of Columbia ', 20],
+['Florida ', 2407],
+['Georgia ', 1179],
+['Hawaii ', 102],
+['Idaho ', 214],
+['Illinois ', 991],
+['Indiana ', 783],
+['Iowa ', 317],
+['Kansas ', 350],
+['Kentucky ', 638],
+['Louisiana ', 703],
+['Maine ', 145],
+['Maryland ', 465],
+['Massachusetts ', 326],
+['Michigan ', 947],
+['Minnesota ', 387],
+['Mississippi ', 613],
+['Missouri ', 757],
+['Montana ', 229],
+['Nebraska ', 211],
+['Nevada ', 262],
+['New Hampshire ', 135],
+['New Jersey ', 542],
+['New Mexico ', 310],
+['New York ', 1199],
+['North Carolina ', 1289],
+['North Dakota ', 148],
+['Ohio ', 989],
+['Oklahoma ', 678],
+['Oregon ', 313],
+['Pennsylvania ', 1208],
+['Rhode Island ', 65],
+['South Carolina ', 767],
+['South Dakota ', 135],
+['Tennessee ', 995],
+['Texas ', 3382],
+['Utah ', 220],
+['Vermont ', 69],
+['Virginia ', 740],
+['Washington ', 436],
+['West Virginia ', 332],
+['Wisconsin ', 543],
+['Wyoming ', 87],
+['Puerto Rico ', 344],
+        ]);
+      var options = {
+        datalessRegionColor: '#f5f5f5',
+        backgroundColor: 'none',
+        displayMode: 'regions',
+        enableRegionInteractivity: 'true',
+        resolution: 'provinces',
+        sizeAxis: {
+          minValue: 1,
+          maxValue: 1,
+          minSize: 10,
+          maxSize: 10
+        },
+        region: 'US',
+        keepAspectRatio: true,
+        width: 600,
+        height: 350,
+        tooltip: {
+          textStyle: {
+            color: '#444444'
+          },
+          trigger: 'hover'
+        }
+      };
+      var chart = new google.visualization.GeoChart(document.getElementById('geochart-colors'));
+      chart.draw(data, options);
+    };
+  </script>
+
 </body>
 </html>
 
