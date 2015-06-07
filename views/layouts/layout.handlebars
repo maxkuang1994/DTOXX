@@ -207,8 +207,7 @@
     })
 
   //create svg
-
-    //var dataset = [ 5, 10, 13, 19, 21, 25, 22, 18, 15, 13, 11, 12, 15, 20, 18, 17, 16, 18, 23, 25 ];
+  //var dataset = [ 5, 10, 13, 19, 21, 25, 22, 18, 15, 13, 11, 12, 15, 20, 18, 17, 16, 18, 23, 25 ];
 
   var svg = d3.select("#d3").append("svg")
     .attr("width", width + margin.left + margin.right)
@@ -230,7 +229,7 @@ d3.tsv("fonts/data.tsv", type, function(error, data) {
       .call(xAxis)
       .selectAll("text")  
       .style("text-anchor", "end")
-      .attr("dx", "-.8em")
+      .attr("dx", "-4em")
       .attr("dy", ".15em")
       .attr("transform", function(d) {
         return "rotate(-65)" 
@@ -531,7 +530,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
     </script>
 
 
-    
+
 
 
       <script type="text/javascript" src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1.1','packages':['geochart']}]}"></script>

@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" >
 <div id="fullpage">
 
   <div class="section" id="section2" style="background:#fff">
@@ -197,7 +199,7 @@ But more important is the logical conclusion that we can reduce drink driving by
           <button style="color:black;border:none;box-shadow:none" onclick="toggleHeatmap()">Toggle Heatmap</button>
           <button  style="color:black;border:none;box-shadow:none" onclick="changeGradient()">Change gradient</button>
           <button  style="color:black;border:none;box-shadow:none" onclick="changeRadius()">Change radius</button>
-          <button  style="color:black;border:none;box-shadow:none" onclick="changeOpacity()">Change opacity</button>
+          <button  stylef="color:black;border:none;box-shadow:none" onclick="changeOpacity()">Change opacity</button>
           
           <div id="map-canvas" style="height:55vh"></div>
 
@@ -240,14 +242,19 @@ But more important is the logical conclusion that we can reduce drink driving by
     </div>
 
     
-    <div class="slide bac" id="slide3">
+    <div class="slide bac" id="slide3" style="background:#fff">
     <section class=" paddingem">
       <div class="page-header text-center" style="background:#fff">
           <h1 class="entry-title">
-               <a href="#" class="noTextDec" style="color:#000">Drunk driving in San Diego</a> <br>
+               <a href="#" class="noTextDec" style="color:#000">alcohol-impaired injuries</a> <br>
                         <div> <i style="color:#1ABC9C"class="fa fa-heart fa-fw"></i> </div>
                     </h1> </div>
-          <div id="container3"></div>
+          <div id="container3" style="width:40%;float:left"></div>
+              <div  style="width:40%;float:right;background:rgba(94, 157, 123, 0.94);padding:10px">
+<h2 style="color:#fff">Do you know there are more than 17,000 annual alcohol-impaired injuries in San Diego. Let's drive 
+safer and create a happier city. Start your journey with us. Learn more about the statistics and enjoy your trip with friends and family</h2>
+
+              </div>
       </section>
     </div>
 
@@ -265,7 +272,8 @@ But more important is the logical conclusion that we can reduce drink driving by
       <div>
         <h1>We can do better</h1> </div>
       <div>
-        <h2>When in a group, designate a drinking driver. Don't let impaired friends drink and drive, take any measures necessary. When alone, request a taxi cab. We live in a time where transporation is more accessible than ever before. No excuses, drink responsibly</h2> </div>
+        <h2>When in a group, designate a drinking driver. Don't let impaired friends drink and drive, take any measures necessary. When alone, request a taxi cab. We live in a time where transporation is more accessible than ever before. No excuses, drink responsibly</h2> 
+      </div>
       <div id="container">
         <div class="pour"></div>
         <div id="beaker">
@@ -300,42 +308,7 @@ But more important is the logical conclusion that we can reduce drink driving by
 
 
     <style>
-      html,
-      body,
-      #map-canvas {
-        height: 100%;
-        margin: 0px;
-        padding: 0px
-      }
-      #panel {
-        position: absolute;
-        top: 5px;
-        left: 50%;
-        margin-left: -180px;
-        z-index: 5;
-        background-color: #fff;
-        padding: 5px;
-        border: 1px solid #999;
-      }
-      * {
-        box-sizing: none;
-      }
-      #map {
-        width: 400px;
-        height: 300px;
-        border: 1px solid black;
-      }
-      #legend {
-        position: relative;
-        width: 400px;
-        height: 30px;
-        margin-top: 10px;
-      }
-      #legendGradient {
-        width: 100%;
-        height: 15px;
-        border: 1px solid black;
-      }
+ 
     </style>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=visualization"></script>
     </div>
@@ -347,3 +320,5 @@ But more important is the logical conclusion that we can reduce drink driving by
   </head>
 
   </script>
+
+  </html>
