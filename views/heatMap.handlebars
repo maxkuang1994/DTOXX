@@ -1,49 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset=utf-8 />
-<title>Plain Leaflet API</title>
-<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-<script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox.js'></script>
-<link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox.css' rel='stylesheet' />
-<script src="jquery-1.11.3.min.js"></script>
-<style>
-  body { margin:0; padding:0; }
-  #map { position:absolute; left:2vw; top:15vh; bottom:0; width:45vw; height:80vh; }
-  #panel{ position:absolute;right:2vw; top:15vh; bottom:0; width: 45vw; height: 80vh;
-  background-color: #E4E4E4;  border-radius: 5px;}
-  .legend {
-    line-height: 18px;
-    color: #555;
-}
-.legend i {
-    width: 100px;
-    height: 16px;
-    float: left;
-    margin-right: 8px;
-    opacity: 0.7;
-}
 
-.info {
-    padding: 6px 8px;
-    font: 14px/16px Arial, Helvetica, sans-serif;
-    background: white;
-    background: rgba(255,255,255,0.8);
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
-    border-radius: 5px;
-}
-.info h4 {
-    margin: 0 0 5px;
-    color: #777;
-}
 
-</style>
-</head>
-<body>
+
+  <div class="section" id="section1" style="background:#fff">
+
+
 <div id='map'></div>
 <div id='panel'>
-    <h1 id="currentRegion">Hello</h1>
-    <h1>SHOW C3JS GRAPH HERE!</h1>
+    <h1 id="currentRegion">Hover Region to Learn More</h1>
+    <div id="pieCharts"></div>
 </div>
 
 <script>
@@ -293,9 +257,7 @@ info.onAdd = function (map) {
 
 // method that we will use to update the control based on feature properties passed
 info.update = function (props) {
-    this._div.innerHTML = '<h4>SD DUI injuries No.</h4>' +  (props ?
-        '<b>' + props.DELPHIREGION + '</b><br />' + props.density + ' injuries'
-        : 'Hover over a region');
+
     if(props){
         updatePanel(props);
     }
@@ -305,13 +267,98 @@ info.update = function (props) {
 info.addTo(map);
 
 function updatePanel(props){
-    $("#currentRegion").text(props.DELPHIREGION);
+    $("#currentRegion").text(props.DELPHIREGION+"; Injuries: "+props.density);
+
+    pieChart(props.DELPHIREGION,props.density);
+    
 }
 
 </script>
 
-<script type="text/javascript">
+
+<script src="js/d3.min.js"></script>
+<script src="js/d3pie.min.js"></script>
+<script>
+  var pie;
+function pieChart(name,density){
+
+  console.log(name);
+  console.log("current pie is "+pie);
+  if(pie!=undefined)
+pie.destroy();
+pie = new d3pie("pieCharts", {
+  "header": {
+    "title": {
+      "text": "San Diego DUI",
+      "fontSize": 22,
+      "font": "verdana"
+    },
+    "subtitle": {
+      "text": "Learn more about injuries in each city",
+      "color": "#999999",
+      "fontSize": 10,
+      "font": "verdana"
+    },
+    "titleSubtitlePadding": 12
+  },
+  "size": {
+    "canvasHeight": 400,
+    "canvasWidth": 400,
+    "pieOuterRadius": "88%"
+  },
+  "data": {
+    "content": [
+      {
+        "label": "San Diego",
+        "value": 2199,
+        "color": "#7e3838"
+      },
+      {
+        "label": name,
+        "value": density,
+        "color": "#386a7e"
+      }
+    ]
+  },
+  "labels": {
+    "outer": {
+      "pieDistance": 32
+    },
+    "inner": {
+      "format": "value"
+    },
+    "mainLabel": {
+      "font": "verdana"
+    },
+    "percentage": {
+      "color": "#e1e1e1",
+      "font": "verdana",
+      "decimalPlaces": 0
+    },
+    "value": {
+      "color": "#e1e1e1",
+      "font": "verdana"
+    },
+    "lines": {
+      "enabled": true,
+      "color": "#cccccc"
+    },
+    "truncation": {
+      "enabled": true
+    }
+  },
+  "effects": {
+    "pullOutSegmentOnClick": {
+      "effect": "linear",
+      "speed": 400,
+      "size": 8
+    }
+  }
+});
+
+
+}
+
 
 </script>
-</body>
-</html>
+
