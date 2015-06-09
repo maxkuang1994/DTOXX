@@ -395,6 +395,7 @@ myLayer.on('mouseout', function(e) {
 });
 
 function displayInfo(name){
+  $("#pieChartShow").show();
   console.log("INFOINFO!");
   if( name == "North park: High Density"){
       var name ="North Park";
@@ -410,6 +411,8 @@ function displayInfo(name){
       pieChart1(name,79);
       $("#pieCharts1").hide();
       $("#note").show();
+      $("#pieChartShow").show();
+
 
 
 
@@ -603,6 +606,7 @@ $( document ).ready(function() {
     $("#pacific").hide();
     $("#overlook").hide();
     $("#pieCharts1").hide();
+    $("#pieChartShow").hide();
 
     console.log("done!")
 });
@@ -702,6 +706,7 @@ $( document ).ready(function() {
         $('#pieChartShow').attr('class', 'showing');
         $('#pieChartShow').text('Hide Pie Chart');
         $('#pieCharts1').show();
+
 
 
         }
