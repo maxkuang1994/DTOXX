@@ -930,7 +930,7 @@ function getColor(d) {
            d > 50   ? '#FD8D3C' :
            d > 20   ? '#FEB24C' :
            d > 10   ? '#FED976' :
-                      '#FFEDA0';
+                      '#FC4E2A';
 }
 
 function style(feature) {
@@ -1032,6 +1032,10 @@ info.update = function (props) {
 info.addTo(map);
 
 function updatePanel(props){
+    if(props.DELPHIREGION == "unknown"){
+    props.DELPHIREGION = "Central Region";
+    props.density = 161;
+  }
     $("#currentRegion").text(props.DELPHIREGION+"; Injuries: "+props.density);
 
     pieChart(props.DELPHIREGION,props.density);
@@ -1046,7 +1050,10 @@ function updatePanel(props){
 <script>
   var pie;
 function pieChart(name,density){
-
+  if(name == "unknown"){
+    name = "Central Region";
+    density = 161;
+  }
   console.log(name);
   console.log("current pie is "+pie);
   if(pie!=undefined)
@@ -1131,6 +1138,11 @@ pie = new d3pie("pieCharts", {
 <script>
   var pie1;
 function pieChart1(name,density){
+  console.log("NAME IS "+name);
+  if(name == "unknown"){
+    name = "Central Region";
+    density = 161;
+  }
   console.log("");
   console.log(name);
   console.log("current pie is "+pie);
