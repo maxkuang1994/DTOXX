@@ -264,7 +264,7 @@ d3.tsv("fonts/data.tsv", type, function(error, data) {
       .on('mouseover', tip.show)
       .on('mouseout', tip.hide)
         .attr("fill", function(d) {
-    return "rgb(" + ( parseInt(d.frequency*1.5, 10)) + ", "+ (255-parseInt(d.frequency*1.5, 10) )+", 100)";
+    return "rgb(" + ( parseInt(d.frequency*1.4, 10)) + ", "+ (parseInt(d.frequency*1.4, 10) )+", 180)";
     });
 
     d3.select("input").on("change", change);
