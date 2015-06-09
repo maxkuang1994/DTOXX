@@ -313,6 +313,49 @@ safer and create a happier city. Start your journey with us.<br><br> Learn more 
             <div> <i style="color:#1ABC9C"class="fa fa-bar-chart fa-fw"></i> </div>
                     </h1> </div>
 <div style="text-align:center">
+  <style>
+.legend label{
+  display:block;
+  float:right;
+  height:15px;
+  width:100%;
+  text-align:center;
+  font-size:9px;
+  color:#808080;
+
+}
+.legend span {
+  display:block;
+  float:left;
+  height:15px;
+  width:20%;
+  text-align:center;
+  font-size:9px;
+  color:#808080;
+  }
+
+#gethigh{
+  margin-top: -60px;
+  float: right;
+}
+</style>
+<!-- Set the display of this container to none so we can
+     add it programmatically to `legendControl` -->
+<div id='legend' style='display:none;'>
+  <strong>Driver density</strong>
+  <nav class='legend clearfix'>
+    <span style='background:#BDC9E1;'></span>
+    <br>
+    <span style='background:#74A9CF;'></span>
+    <br>
+    <span style='background:#2B8CBE;'></span>
+    <br>
+    <div id="gethigh">
+    <label>Medium</label>
+    <label>High</label>
+    <label>Highest</label>
+    </div>
+</div>
   <style type="text/css">
   #map2{
     width: 50vw;
@@ -325,10 +368,12 @@ safer and create a happier city. Start your journey with us.<br><br> Learn more 
 // Provide your access token
 L.mapbox.accessToken = 'pk.eyJ1IjoiZGp1c3RvIiwiYSI6IjFkMzI5MTM4N2JjN2Y3MDQ0M2Q1Zjg2MDY3NTVjMmYxIn0.Wv-W-HOY0EssG5cac-vPIw';
 // Create a map in the div #map
-L.mapbox.map('map2', 'djusto.8d3789b0')
-.setView([32.754, -117.16], 13);
+var map2 = L.mapbox.map('map2', 'djusto.8d3789b0')
+.setView([32.754, -117.16], 12);
+map2.legendControl.addLegend(document.getElementById('legend').innerHTML);
 </script>
 </script>
+
     <div id='panel'>
       <h1 id="currentRegion">Hover Region to Learn More</h1>
       <div id="pieCharts"></div>
