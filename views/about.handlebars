@@ -370,99 +370,71 @@
           text-align: justify;
         }
       </style>
-      <script type="text/javascript">
-        $(document).ready(function() {
-          console.log("ready!");
-          $("#northpark").hide();
-          $("#downtown").hide();
-          $("#hillcrest").hide();
-          $("#airport").hide();
-          $("#loma").hide();
-          $("#sunset").hide();
-          $("#mission").hide();
-          $("#pacific").hide();
-          $("#overlook").hide();
-          $("#pieCharts1").hide();
-          $("#pieChartShow").hide();
-          console.log("done!")
-        });
-      </script>
+     
       <div id='panel' class="panel">
+        <br>
         <h1 id="currentRegion">Hover Region to Learn More</h1>
         <div id="overallText">
           <div id="northpark">
-            <br>
-            <br>
+           
             <h3>The North Park area received a <b>high density</b> rating in ridesharing apps rating. It fall under the region
         of "El Cajon" in our previous visualization. This means that it has around 79 DUI crashes yearly, which
         is <b>the average in San Diego.</b></h3>
-            <br>
-            <br> </div>
+           </div>
           <div id="downtown">
             <br>
             <br>
             <h3>The Downtown area received a <b>highest density</b> rating in ridesharing apps rating. It fall under the region
         of "Southeastern San Diego and Central San Diego" in our previous visualization. This means that it has around 216 DUI crashes yearly, which
         is <b>well over the average in San Diego.</b></h3>
-            <br>
-            <br> </div>
+            </div>
           <div id="hillcrest">
-            <br>
-            <br>
+          
             <h3>The Hillcrest area received a <b>high density</b> rating in ridesharing apps rating. It fall under the region
         of "Mid-city" in our previous visualization. This means that it has around 106 DUI crashes yearly, which
         is <b>slightly over the average in San Diego.</b></h3>
-            <br>
-            <br> </div>
+            </div>
           <div id="airport">
-            <br>
-            <br>
+  
             <h3>The Airport area received a <b>highest density</b> rating in ridesharing apps rating. It fall under the region
         of "Central San Diego" in our previous visualization. This means that it has around 138 DUI crashes yearly, which
-        is <b>slightly over the average in San Diego.</b></h3>
-            <br>
-            <br> </div>
+        is <b>slightly over the average in San Diego.</b></h3></div>
           <div id="loma">
             <br>
             <br>
             <h3>The Loma Portal area received a <b>highest density</b> rating in ridesharing apps rating. It fall under the region
         of "North San Diego" in our previous visualization. This means that it has around 15 DUI crashes yearly, which
         is <b>well under the average in San Diego.</b></h3>
-            <br>
-            <br> </div>
+       </div>
           <div id="sunset">
             <br>
             <br>
             <h3>The Sunset Cliffs area received a <b>medium density</b> rating in ridesharing apps rating. It fall under the region
         of "North San Diego" in our previous visualization. This means that it has around 15 DUI crashes yearly, which
         is <b>well under the average in San Diego.</b></h3>
-            <br>
-            <br> </div>
+            </div>
           <div id="mission">
             <br>
             <br>
             <h3>The Mission Beach area received a <b>medium density</b> rating in ridesharing apps rating. It fall under the region
         of "North San Diego" in our previous visualization. This means that it has around 15 DUI crashes yearly, which
         is <b>well under the average in San Diego.</b></h3>
-            <br>
-            <br> </div>
+           </div>
           <div id="pacific">
             <br>
             <br>
             <h3>The Pacific Beach area received a <b>highest density</b> rating in ridesharing apps rating. It fall under the region
         of "North San Diego and the University Area" in our previous visualization. This means that it has around 180 DUI crashes yearly, which
         is <b>moderately above the average in San Diego.</b></h3>
-            <br>
-            <br> </div>
+          </div>
           <div id="overlook">
             <br>
             <br>
             <h3>[FIGURE OUT LATER]The Pacific Beach area received a <b>highest density</b> rating in ridesharing apps rating. It fall under the region
         of "North San Diego and the University Area" in our previous visualization. This means that it has around 180 DUI crashes yearly, which
         is <b>moderately above the average in San Diego.</b></h3>
-            <br>
-            <br> </div>
-          <br>
+           </div>
+      
           <h3 id="note">Please note that our DUI data is based on 2011 while our driver density dataset is contemporary. Thus,
         any conclusion must be taken with precaution. <b>Relation does not equal causation</b></h3>
           <br> </div>
@@ -573,6 +545,23 @@
 
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=visualization"></script>
 
+ <script type="text/javascript">
+        $(document).ready(function() {
+          console.log("ready!");
+          $("#northpark").hide();
+          $("#downtown").hide();
+          $("#hillcrest").hide();
+          $("#airport").hide();
+          $("#loma").hide();
+          $("#sunset").hide();
+          $("#mission").hide();
+          $("#pacific").hide();
+          $("#overlook").hide();
+          $("#pieCharts1").hide();
+          $("#pieChartShow").hide();
+          console.log("done!")
+        });
+      </script>
 
 <script>
 // Provide your access token
@@ -1134,6 +1123,91 @@ pie = new d3pie("pieCharts", {
 
 
 </script>
+
+<script>
+  var pie1;
+function pieChart1(name,density){
+  console.log("");
+  console.log(name);
+  console.log("current pie is "+pie);
+  if(pie1!=undefined)
+pie1.destroy();
+pie1 = new d3pie("pieCharts1", {
+  "header": {
+    "title": {
+      "text": "",
+      "fontSize": 22,
+      "font": "verdana"
+    },
+    "subtitle": {
+      "color": "#999999",
+      "fontSize": 10,
+      "font": "verdana"
+    },
+    "titleSubtitlePadding": 12
+  },
+  "size": {
+    "canvasHeight": 400,
+    "canvasWidth": 400,
+    "pieOuterRadius": "88%"
+  },
+  "data": {
+    "content": [
+      {
+        "label": "San Diego",
+        "value": 2199,
+        "color": "#EA5E5F"
+      },
+      {
+        "label": name,
+        "value": density,
+        "color": "#FCB75A"
+      }
+    ]
+  },
+  "labels": {
+    "outer": {
+      "pieDistance": 32
+    },
+    "inner": {
+      "format": "value"
+    },
+    "mainLabel": {
+      "font": "verdana"
+    },
+    "percentage": {
+      "color": "#e1e1e1",
+      "font": "verdana",
+      "decimalPlaces": 0
+    },
+    "value": {
+      "color": "#e1e1e1",
+      "font": "verdana"
+    },
+    "lines": {
+      "enabled": true,
+      "color": "#cccccc"
+    },
+    "truncation": {
+      "enabled": true
+    }
+  },
+  "effects": {
+    "pullOutSegmentOnClick": {
+      "effect": "linear",
+      "speed": 400,
+      "size": 8
+    }
+  }
+});
+
+
+}
+
+
+
+</script>
+
 
 
 
