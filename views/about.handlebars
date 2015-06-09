@@ -1036,6 +1036,7 @@ info.addTo(map);
 
 function updatePanel(props){
     $("#currentRegion").text(props.DELPHIREGION+"; Injuries: "+props.density);
+    pieChart(props.DELPHIREGION,props.density);
     
 }
 
@@ -1047,7 +1048,7 @@ function updatePanel(props){
 <script>
   var pie;
 function pieChart(name,density){
-
+  console.log("YOU FUNCTION IS RUNNING!");
   console.log(name);
   console.log("current pie is "+pie);
   if(pie!=undefined)
@@ -1136,7 +1137,7 @@ pie = new d3pie("pieCharts", {
 <script>
   var pie;
 function pieChart1(name,density){
-  console.log("PAAAA");
+  console.log("");
   console.log(name);
   console.log("current pie is "+pie);
   if(pie!=undefined)
