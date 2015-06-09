@@ -210,13 +210,16 @@
       <section class=" paddingem" >
         <div class="page-header text-center" style="background:#fff">
           <h1 class="entry-title">
-               <a href="#" class="noTextDec mediumfont" style="color:#000">alcohol-impaired injuries</a> <br>
+               <a href="#" class="noTextDec mediumfont" style="color:#000">How much does DUI accidents really affect us?</a> <br>
                         <div> <i style="color:#1ABC9C"class="fa fa-heart fa-fw"></i> </div>
                     </h1> </div>
         <div id="container3" style="width:40%;float:left"></div>
+          <div style="width:40%;float:right;background:#F5D96A; padding:10px">
+          <h2 style="color:#fff;padding:20px;line-height:0.9; text-align: justify;" class="mediumfont">Sober drivers composed more</h2> </div>
+          <br>
         <div style="width:40%;float:right;background:#F5D96A; padding:10px">
-          <h2 style="color:#fff;padding:20px;line-height:0.9" class="mediumfont">DO YOU KNOW there are more than 17,000 annual alcohol-impaired injuries in San Diego. Let's drive 
-safer and create a happier city. Start your journey with us.<br><br> Learn more about the statistics and enjoy a happier trip</h2> </div>
+          <h2 style="color:#fff;padding:20px;line-height:0.9; text-align: justify;" class="mediumfont">DID  YOU KNOW ... there are more than 17,000 annual alcohol-impaired injuries in San Diego. Let's drive 
+          safer and create a happier city. Start your journey with us.<br><br> Learn more about the statistics and enjoy a happier trip</h2> </div>
       </section>
     </div>
 
@@ -224,9 +227,11 @@ safer and create a happier city. Start your journey with us.<br><br> Learn more 
       <section class=" paddingem">
         <div class="page-header text-center" style="background:#fff;opacity:0.9">
           <h1 class="entry-title">
-               <a href="#" class="noTextDec mediumfont" style="color:#000">Drunk driving in the United States</a> <br>
+          <a href="#" class="noTextDec mediumfont" style="color:#000">Drunk driving in the United States</a> <br>
                         <div> <i style="color:#1ABC9C"class="fa fa-heart fa-fw"></i> </div>
                     </h1> </div>
+        <h1 style="color:white">California is the second state with the biggest rate of DUIs, thus
+          making San Diego a case worth studying</h1>
         <div class="imageSec img-responsive page-header" style="background:#195BA1">
           <div id="geochart-colors" class="img-responsive"></div>
         </div>
@@ -243,7 +248,7 @@ safer and create a happier city. Start your journey with us.<br><br> Learn more 
         <div class="imageSec  page-header" style="background-color:rgb(240, 238, 238);text-align:right">
           <div id="d3" style="background-color: rgb(240, 238, 238)"></div>
           <label>
-            <input type="checkbox">Sort </label>
+            <input type="checkbox" >Sort </label>
         </div>
       </section>
     </div>
@@ -392,6 +397,7 @@ myLayer.on('mouseout', function(e) {
 function displayInfo(name){
   console.log("INFOINFO!");
   if( name == "North park: High Density"){
+      var name ="North Park";
       $("#northpark").show();
       $("#downtown").hide();
       $("#hillcrest").hide();
@@ -401,8 +407,15 @@ function displayInfo(name){
       $("#mission").hide();
       $("#pacific").hide();
       $("#overlook").hide();
+      pieChart1(name,79);
+      $("#pieCharts1").hide();
+      $("#note").show();
+
+
+
   }
   if( name == "North park: High Density "){
+      var name ="North Park";
       $("#northpark").show();
       $("#downtown").hide();
       $("#hillcrest").hide();
@@ -412,8 +425,15 @@ function displayInfo(name){
       $("#mission").hide();
       $("#pacific").hide();
       $("#overlook").hide();
+      pieChart1(name,79);
+      $("#pieCharts1").hide();
+      $("#note").show();
+
+
+
   }
   else if( name == "Hillcrest: High density"){
+      var name = "Hillcrest";
       $("#northpark").hide();
       $("#downtown").hide();
       $("#hillcrest").show();
@@ -423,8 +443,15 @@ function displayInfo(name){
       $("#mission").hide();
       $("#pacific").hide();
       $("#overlook").hide();
+      pieChart1(name,106);
+      $("#pieCharts1").hide();
+      $("#note").show();
+
+
+
   }
   else if( name == "Downtown SD: Highest density"){
+      var name = "Downtown SD";
       $("#northpark").hide();
       $("#downtown").show();
       $("#hillcrest").hide();
@@ -434,8 +461,15 @@ function displayInfo(name){
       $("#mission").hide();
       $("#pacific").hide();
       $("#overlook").hide();
+      pieChart1(name,216);
+      $("#pieCharts1").hide();
+      $("#note").show();
+
+
+
   }
   else if( name == "Sunset Cliffs: Highest density"){
+      var name = "Sunset Cliifs";
       $("#northpark").hide();
       $("#downtown").hide();
       $("#hillcrest").hide();
@@ -445,8 +479,15 @@ function displayInfo(name){
       $("#mission").hide();
       $("#pacific").hide();
       $("#overlook").hide();
+      pieChart1(name,15);
+      $("#pieCharts1").hide();
+      $("#note").show();
+
+
+
   }
   else if( name == "Mission Beach: Medium density"){
+      var name = "Mission Beach"
       $("#northpark").hide();
       $("#downtown").hide();
       $("#hillcrest").hide();
@@ -456,8 +497,15 @@ function displayInfo(name){
       $("#mission").show();
       $("#pacific").hide();
       $("#overlook").hide();
+      pieChart1(name,15);
+      $("#pieCharts1").hide();
+      $("#note").show();
+
+
+
   }
   else if( name == "Pacific Beach: High density"){
+      var name ="Pacific Beach";
       $("#northpark").hide();
       $("#downtown").hide();
       $("#hillcrest").hide();
@@ -466,9 +514,15 @@ function displayInfo(name){
       $("#sunset").hide();
       $("#mission").hide();
       $("#pacific").show();
-      $("#overlook").hide();
+      $("#overlook").hide();    
+      pieChart1(name,180);
+      $("#pieCharts1").hide();
+      $("#note").show();
+
+
   }
   else if( name == "SD Airport: High density"){
+      var name = "SD Aiport";
       $("#northpark").hide();
       $("#downtown").hide();
       $("#hillcrest").hide();
@@ -477,9 +531,15 @@ function displayInfo(name){
       $("#sunset").hide();
       $("#mission").hide();
       $("#pacific").hide();
-      $("#overlook").hide();
+      $("#overlook").hide();    
+      pieChart1(name,138);
+      $("#pieCharts1").hide();
+      $("#note").show();
+
+
   }
   else if( name == "Loma Portal: Medium density"){
+      var name = "Loma Portal";
       $("#northpark").hide();
       $("#downtown").hide();
       $("#hillcrest").hide();
@@ -488,9 +548,17 @@ function displayInfo(name){
       $("#sunset").hide();
       $("#mission").hide();
       $("#pacific").hide();
-      $("#overlook").hide();
+      $("#overlook").hide();    
+      pieChart1(name,15);
+      $("#pieCharts1").hide();
+      $("#note").show();
+
+
+
+
   }
   else if( name == "Overlook: Medium Density"){
+      var name = "Overlook";
       $("#northpark").hide();
       $("#downtown").hide();
       $("#hillcrest").hide();
@@ -499,19 +567,13 @@ function displayInfo(name){
       $("#sunset").hide();
       $("#mission").hide();
       $("#pacific").hide();
-      $("#overlook").show();
+      $("#overlook").show();    
+      pieChart1(name,180);
+      $("#pieCharts1").hide();
+      $("#note").show();
+
   }
   else{
-      $("#northpark").hide();
-      $("#downtown").hide();
-      $("#hillcrest").hide();
-      $("#airport").hide();
-      $("#loma").hide();
-      $("#sunset").hide();
-      $("#mission").hide();
-      $("#pacific").hide();
-      $("#overlook").hide();
-
   }
 }
 
@@ -520,7 +582,7 @@ function displayInfo(name){
 </script>
 </script>
 <style type="text/css">
-  #panel{
+  .panel{
     margin-top: 10vh;
   }
   #overallText{
@@ -540,11 +602,13 @@ $( document ).ready(function() {
     $("#mission").hide();
     $("#pacific").hide();
     $("#overlook").hide();
+    $("#pieCharts1").hide();
+
     console.log("done!")
 });
 </script>
 
-    <div id='panel'>
+    <div id='panel' class="panel">
       <h1 id="currentRegion">Hover Region to Learn More</h1>
       <div id="overallText">
       <div id="northpark">
@@ -611,15 +675,60 @@ $( document ).ready(function() {
         <br><br>
       </div>
       <br>
-      <h3>Please note that our DUI data is based on 2011 while our driver density dataset is contemporary. Thus,
+      <h3 id="note">Please note that our DUI data is based on 2011 while our driver density dataset is contemporary. Thus,
         any conclusion must be taken with precaution. </b>Relation does not equal causation<b></h3>
 
         <br>
       </div>
-      <h3><b>Show Pie Chart</b></h3>
+      <h3 id="pieChartShow" class="nope">Show Pie Chart</h3>
+
+      
+      <script type="text/javascript">
+      $("#pieChartShow").click(function() {
+        var id = $('#pieChartShow').attr('class');
+        console.log("class: "+id);
+        if(id != "showing"){
+        console.log("CLICKED");
+        $("#northpark").hide();
+        $("#downtown").hide();
+        $("#hillcrest").hide();
+        $("#airport").hide();
+        $("#loma").hide();
+        $("#sunset").hide();
+        $("#mission").hide();
+        $("#pacific").hide();
+        $("#overlook").hide();
+        $("#note").hide();
+        $('#pieChartShow').attr('class', 'showing');
+        $('#pieChartShow').text('Hide Pie Chart');
+        $('#pieCharts1').show();
 
 
-      <div id="pieCharts">
+        }
+        else{
+          $("#pieCharts1").hide();
+        $("#note").show();
+        $('#pieChartShow').attr('class', 'nope');
+        $('#pieChartShow').text('Show Pie Chart');
+        $('#pieCharts1').hide();
+
+
+
+        }
+
+      });
+
+      $( "#pieChartShow" ).hover(
+        function() {
+        $( this ).css( "color","#FFFFFF" );
+      }, function() {
+        $( this ).css( "color","#000000" );
+      }
+    );
+      </script>
+      <br>
+
+      <div id="pieCharts1">
       </div>
     </div>
 </div>
@@ -922,8 +1031,6 @@ info.addTo(map);
 
 function updatePanel(props){
     $("#currentRegion").text(props.DELPHIREGION+"; Injuries: "+props.density);
-
-    pieChart(props.DELPHIREGION,props.density);
     
 }
 
@@ -949,6 +1056,94 @@ pie = new d3pie("pieCharts", {
     },
     "subtitle": {
       "text": "Learn more about injuries in each city",
+      "color": "#999999",
+      "fontSize": 10,
+      "font": "verdana"
+    },
+    "titleSubtitlePadding": 12
+  },
+  "size": {
+    "canvasHeight": 400,
+    "canvasWidth": 400,
+    "pieOuterRadius": "88%"
+  },
+  "data": {
+    "content": [
+      {
+        "label": "San Diego",
+        "value": 2199,
+        "color": "#EA5E5F"
+      },
+      {
+        "label": name,
+        "value": density,
+        "color": "#FCB75A"
+      }
+    ]
+  },
+  "labels": {
+    "outer": {
+      "pieDistance": 32
+    },
+    "inner": {
+      "format": "value"
+    },
+    "mainLabel": {
+      "font": "verdana"
+    },
+    "percentage": {
+      "color": "#e1e1e1",
+      "font": "verdana",
+      "decimalPlaces": 0
+    },
+    "value": {
+      "color": "#e1e1e1",
+      "font": "verdana"
+    },
+    "lines": {
+      "enabled": true,
+      "color": "#cccccc"
+    },
+    "truncation": {
+      "enabled": true
+    }
+  },
+  "effects": {
+    "pullOutSegmentOnClick": {
+      "effect": "linear",
+      "speed": 400,
+      "size": 8
+    }
+  }
+});
+
+
+}
+
+
+
+</script>
+</script>
+
+
+<script src="js/d3.min.js"></script>
+<script src="js/d3pie.min.js"></script>
+<script>
+  var pie;
+function pieChart1(name,density){
+  console.log("PAAAA");
+  console.log(name);
+  console.log("current pie is "+pie);
+  if(pie!=undefined)
+pie.destroy();
+pie = new d3pie("pieCharts1", {
+  "header": {
+    "title": {
+      "text": "",
+      "fontSize": 22,
+      "font": "verdana"
+    },
+    "subtitle": {
       "color": "#999999",
       "fontSize": 10,
       "font": "verdana"
