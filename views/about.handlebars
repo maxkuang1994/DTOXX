@@ -313,6 +313,22 @@ safer and create a happier city. Start your journey with us.<br><br> Learn more 
             <div> <i style="color:#1ABC9C"class="fa fa-bar-chart fa-fw"></i> </div>
                     </h1> </div>
 <div style="text-align:center">
+  <style type="text/css">
+  #map2{
+    width: 50vw;
+    height: 70vh;
+  }
+  </style>
+    <div id='map2'></div>
+
+<script>
+// Provide your access token
+L.mapbox.accessToken = 'pk.eyJ1IjoiZGp1c3RvIiwiYSI6IjFkMzI5MTM4N2JjN2Y3MDQ0M2Q1Zjg2MDY3NTVjMmYxIn0.Wv-W-HOY0EssG5cac-vPIw';
+// Create a map in the div #map
+L.mapbox.map('map2', 'djusto.8d3789b0')
+.setView([32.754, -117.16], 13);
+</script>
+</script>
     <div id='panel'>
       <h1 id="currentRegion">Hover Region to Learn More</h1>
       <div id="pieCharts"></div>
